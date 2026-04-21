@@ -1,0 +1,167 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CostExplorerRead",
+      "Effect": "Allow",
+      "Action": [
+        "ce:GetCostAndUsage",
+        "ce:GetCostAndUsageWithResources",
+        "ce:GetCostForecast",
+        "ce:GetDimensionValues",
+        "ce:GetTags",
+        "ce:GetCostCategories",
+        "ce:GetAnomalies",
+        "ce:GetAnomalyMonitors",
+        "ce:GetAnomalySubscriptions",
+        "ce:GetReservationCoverage",
+        "ce:GetReservationUtilization",
+        "ce:GetSavingsPlansCoverage",
+        "ce:GetSavingsPlansUtilization",
+        "ce:GetSavingsPlansUtilizationDetails",
+        "ce:GetRightsizingRecommendation",
+        "ce:ListCostAllocationTags",
+        "ce:ListCostCategoryDefinitions",
+        "ce:DescribeCostCategoryDefinition"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CostOptimizationHubRead",
+      "Effect": "Allow",
+      "Action": [
+        "cost-optimization-hub:GetPreferences",
+        "cost-optimization-hub:GetRecommendation",
+        "cost-optimization-hub:ListEnrollmentStatuses",
+        "cost-optimization-hub:ListRecommendations",
+        "cost-optimization-hub:ListRecommendationSummaries"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ComputeOptimizerRead",
+      "Effect": "Allow",
+      "Action": [
+        "compute-optimizer:DescribeRecommendationExportJobs",
+        "compute-optimizer:GetAutoScalingGroupRecommendations",
+        "compute-optimizer:GetEBSVolumeRecommendations",
+        "compute-optimizer:GetEC2InstanceRecommendations",
+        "compute-optimizer:GetEC2RecommendationProjectedMetrics",
+        "compute-optimizer:GetECSServiceRecommendations",
+        "compute-optimizer:GetEffectiveRecommendationPreferences",
+        "compute-optimizer:GetEnrollmentStatus",
+        "compute-optimizer:GetLambdaFunctionRecommendations",
+        "compute-optimizer:GetRDSDatabaseRecommendations",
+        "compute-optimizer:GetRecommendationPreferences",
+        "compute-optimizer:GetRecommendationSummaries"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "TrustedAdvisorRead",
+      "Effect": "Allow",
+      "Action": [
+        "support:DescribeTrustedAdvisorChecks",
+        "support:DescribeTrustedAdvisorCheckResult",
+        "support:DescribeTrustedAdvisorCheckSummaries",
+        "support:DescribeTrustedAdvisorCheckRefreshStatuses",
+        "trustedadvisor:DescribeChecks",
+        "trustedadvisor:ListChecks",
+        "trustedadvisor:GetRecommendation",
+        "trustedadvisor:ListRecommendations",
+        "trustedadvisor:ListRecommendationResources"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ResourceInventoryRead",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeRegions",
+        "ec2:DescribeInstances",
+        "ec2:DescribeVolumes",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeAddresses",
+        "ec2:DescribeNatGateways",
+        "ec2:DescribeVpcEndpoints",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeImages",
+        "ec2:DescribeReservedInstances",
+        "elasticloadbalancing:DescribeLoadBalancers",
+        "elasticloadbalancing:DescribeTargetGroups",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "rds:DescribeDBInstances",
+        "rds:DescribeDBClusters",
+        "rds:DescribeDBSnapshots",
+        "rds:DescribeReservedDBInstances",
+        "s3:ListAllMyBuckets",
+        "s3:GetBucketLocation",
+        "s3:GetBucketLifecycleConfiguration",
+        "s3:GetBucketTagging",
+        "s3:ListBucket",
+        "lambda:ListFunctions",
+        "lambda:GetFunctionConfiguration",
+        "logs:DescribeLogGroups",
+        "ecr:DescribeRepositories",
+        "ecr:ListImages",
+        "dynamodb:ListTables",
+        "dynamodb:DescribeTable",
+        "elasticache:DescribeCacheClusters",
+        "es:ListDomainNames",
+        "es:DescribeDomain"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "MetricsRead",
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:GetMetricData",
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:ListMetrics"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "TaggingAndResourceGroups",
+      "Effect": "Allow",
+      "Action": [
+        "tag:GetResources",
+        "tag:GetTagKeys",
+        "tag:GetTagValues",
+        "resource-groups:GetResources",
+        "resource-groups:ListGroups"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "OrganizationsReadOptional",
+      "Effect": "Allow",
+      "Action": [
+        "organizations:DescribeOrganization",
+        "organizations:ListAccounts",
+        "organizations:DescribeAccount"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "SavingsPlansRead",
+      "Effect": "Allow",
+      "Action": [
+        "savingsplans:DescribeSavingsPlans",
+        "savingsplans:DescribeSavingsPlansOfferingRates",
+        "savingsplans:DescribeSavingsPlansOfferings"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "IdentitySelfRead",
+      "Effect": "Allow",
+      "Action": [
+        "sts:GetCallerIdentity",
+        "iam:ListAccountAliases"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
