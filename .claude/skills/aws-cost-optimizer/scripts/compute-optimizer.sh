@@ -187,6 +187,7 @@ jq -n \
     summary: $summary,
     total_estimated_monthly_savings_usd: $total,
     by_resource_type: $result
-  }' | tee "$OUT_JSON" >/dev/null
+  }' > "$OUT_JSON"
 
 echo "Wrote $OUT_JSON  (total est. savings: \$$total_savings)" >&2
+cat "$OUT_JSON"

@@ -70,6 +70,7 @@ jq -n \
     available: true,
     total_estimated_monthly_savings_usd: $total,
     checks: ($checks | sort_by(-.estimated_monthly_savings))
-  }' | tee "$OUT_JSON" >/dev/null
+  }' > "$OUT_JSON"
 
 echo "Wrote $OUT_JSON  (est. savings: \$$total)" >&2
+cat "$OUT_JSON"

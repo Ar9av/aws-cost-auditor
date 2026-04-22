@@ -92,7 +92,7 @@ jq -n \
       restart_needed: .restartNeeded,
       rollback_possible: .rollbackPossible
     }))
-  }' | tee "$OUT_JSON" >/dev/null
+  }' > "$OUT_JSON"
 
 echo "Wrote $OUT_JSON" >&2
 
@@ -118,4 +118,6 @@ if [[ "$HUMAN" == "1" ]]; then
         "| \(.action_type) | `\(.resource_id // "-")` (\(.resource_type // "-")) | \(.region) | \(.current_monthly_cost | fmt) | \(.estimated_monthly_savings | fmt) | \(.implementation_effort // "-") |")
     end
   ' "$OUT_JSON"
+else
+  cat "$OUT_JSON"
 fi

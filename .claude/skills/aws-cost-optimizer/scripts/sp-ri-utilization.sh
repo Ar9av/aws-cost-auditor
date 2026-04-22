@@ -70,7 +70,7 @@ jq -n \
       amortized_cost:     (($ri.Total.AmortizedRecurringFee // "0") | tonumber)
     },
     meta: { ce_api_calls: 2, estimated_cost_usd: 0.02 }
-  }' | tee "$OUT_JSON" >/dev/null
+  }' > "$OUT_JSON"
 
 echo "Wrote $OUT_JSON" >&2
 
@@ -90,4 +90,6 @@ if [[ "$HUMAN" == "1" ]]; then
     "- Unused hours: \(.reservations.unused_hours)",
     "- Net RI savings: \(.reservations.net_ri_savings | fmt)"
   ' "$OUT_JSON"
+else
+  cat "$OUT_JSON"
 fi

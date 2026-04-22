@@ -120,10 +120,12 @@ CALLS=$((CALLS + 1))
 forecast_json="null"
 if [[ "$DO_FORECAST" == "1" ]]; then
   echo "[+] Fetching forecast..." >&2
+  # get-cost-forecast uses SCREAMING_SNAKE_CASE (UNBLENDED_COST, BLENDED_COST, etc.)
+  FORECAST_METRIC=$(echo "$METRIC" | sed 's/\([A-Z]\)/_\1/g' | sed 's/^_//' | tr '[:lower:]' '[:upper:]')
   forecast_raw=$(ce get-cost-forecast \
     --time-period "Start=$forecast_start,End=$forecast_end" \
     --granularity MONTHLY \
-    --metric "$METRIC" \
+    --metric "$FORECAST_METRIC" \
     --prediction-interval-level 80 || echo '{}')
   CALLS=$((CALLS + 1))
   forecast_json=$(jq '{
@@ -146,31 +148,33 @@ if [[ "$DO_ACCOUNTS" == "1" ]]; then
     --metrics "$METRIC" \
     --group-by Type=DIMENSION,Key=LINKED_ACCOUNT || echo '{}')
   CALLS=$((CALLS + 1))
-  accounts_json=$(jq "[.ResultsByTime[0].Groups[]? | {
+  accounts_json=$(jq --arg m "$METRIC" '[.ResultsByTime[0].Groups[]? | {
     account_id: .Keys[0],
-    mtd: (.Metrics.$METRIC.Amount | tonumber)
-  }] | sort_by(-.mtd)" <<<"$acct_raw")
+    mtd: (.Metrics[$m].Amount | tonumber)
+  }] | sort_by(-.mtd)' <<<"$acct_raw")
 fi
 
 # --- Build top-services merged with prev-month ---
 services_merged=$(jq -n \
-  --argjson cur "$(jq "[.ResultsByTime[0].Groups[]? | {service: .Keys[0], amt: (.Metrics.$METRIC.Amount | tonumber)}]" <<<"$svc_raw")" \
-  --argjson prev "$(jq "[.ResultsByTime[0].Groups[]? | {service: .Keys[0], amt: (.Metrics.$METRIC.Amount | tonumber)}]" <<<"$svc_prev_raw")" \
+  --argjson cur "$(jq --arg m "$METRIC" '[.ResultsByTime[0].Groups[]? | {service: .Keys[0], amt: (.Metrics[$m].Amount | tonumber)}]' <<<"$svc_raw")" \
+  --argjson prev "$(jq --arg m "$METRIC" '[.ResultsByTime[0].Groups[]? | {service: .Keys[0], amt: (.Metrics[$m].Amount | tonumber)}]' <<<"$svc_prev_raw")" \
   '
-  def prev_for(s): ($prev[] | select(.service == s) | .amt) // 0;
+  def prev_for(s): (first($prev[] | select(.service == s) | .amt) // 0);
   [$cur[] | {
     service: .service,
     mtd: .amt,
     prev_month: prev_for(.service),
-    mom_delta_pct: (if prev_for(.service) > 0 then ((.amt - prev_for(.service)) / prev_for(.service) * 100) else null end)
+    mom_delta_pct: (if prev_for(.service) > 0 then
+      try ((.amt - prev_for(.service)) / prev_for(.service) * 100) catch null
+    else null end)
   }] | sort_by(-.mtd) | .[0:10]
   ')
 
 # --- Daily series flattened ---
-daily_series=$(jq "[.ResultsByTime[] | {
+daily_series=$(jq --arg m "$METRIC" '[.ResultsByTime[] | {
   date: .TimePeriod.Start,
-  amount: (.Total.$METRIC.Amount | tonumber)
-}]" <<<"$daily_raw")
+  amount: (.Total[$m].Amount | tonumber)
+}]' <<<"$daily_raw")
 
 # --- MoM pacing ---
 mom_pacing=$(jq -n \
@@ -183,7 +187,7 @@ mom_pacing=$(jq -n \
   ($prev | tonumber) as $p |
   (($today | split("-") | .[2] | tonumber) - 1) as $days |
   if $p > 0 and $days > 0 then
-    ((($m / $days) * 30) / $p * 100 - 100)
+    try ((($m / $days) * 30 / $p - 1) * 100) catch null
   else null end
   ')
 

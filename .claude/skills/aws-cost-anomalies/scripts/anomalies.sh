@@ -90,11 +90,11 @@ jq -n \
       subscribers: (.Subscribers // [] | map({address: .Address, type: .Type}))
     })),
     gaps: {
-      no_monitors: (($mons.AnomalyMonitors // []) | length) == 0,
-      no_subscriptions: (($subs.AnomalySubscriptions // []) | length) == 0
+      no_monitors: ((($mons.AnomalyMonitors // []) | length) == 0),
+      no_subscriptions: ((($subs.AnomalySubscriptions // []) | length) == 0)
     },
     meta: { ce_api_calls: 3, estimated_cost_usd: 0.03 }
-  }' | tee "$OUT_JSON" >/dev/null
+  }' > "$OUT_JSON"
 
 echo "Wrote $OUT_JSON" >&2
 
@@ -118,4 +118,6 @@ if [[ "$HUMAN" == "1" ]]; then
         "| \(.start_date) | \(.root_cause_service // "-") | \(.root_cause_usage_type // "-") | \(.root_cause_region // "-") | \(.total_impact_usd | fmt) | \(.impact_pct)% |")
      else "No anomalies detected in this window." end)
   ' "$OUT_JSON"
+else
+  cat "$OUT_JSON"
 fi

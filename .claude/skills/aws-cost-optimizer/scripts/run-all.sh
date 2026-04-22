@@ -117,7 +117,7 @@ jq -n \
     },
     ranked_opportunities: $ranked,
     total_estimated_monthly_savings_usd: $total
-  }' | tee "$OUT_JSON" >/dev/null
+  }' > "$OUT_JSON"
 
 echo "Wrote $OUT_JSON  (total ranked savings: \$$total/mo)" >&2
 
@@ -135,4 +135,6 @@ if [[ "$HUMAN" == "1" ]]; then
     (.ranked_opportunities[0:20][] |
       "| \(.source) | \(.action_type) | `\(.resource_id // "-")` | \(.region // "-") | \((.estimated_monthly_savings // 0) | fmt) | \(.implementation_effort // "-") |")
   ' "$OUT_JSON"
+else
+  cat "$OUT_JSON"
 fi
