@@ -170,7 +170,7 @@ jq -n \
       estimated_untagged_monthly_cost_usd: $est
     },
     meta: { ce_api_calls: $calls, estimated_cost_usd: ($calls * 0.01) }
-  }' | tee "$OUT_JSON" >/dev/null
+  }' > "$OUT_JSON"
 
 echo "Wrote $OUT_JSON  (CE calls: $calls)" >&2
 
@@ -195,4 +195,6 @@ if [[ "$HUMAN" == "1" ]]; then
     "|---|---|---|---|",
     (.untagged_resources[0:20][] | "| \(.service) | \(.region) | \(.missing_keys | join(", ")) | `\(.resource_arn)` |")
   ' "$OUT_JSON"
+else
+  cat "$OUT_JSON"
 fi

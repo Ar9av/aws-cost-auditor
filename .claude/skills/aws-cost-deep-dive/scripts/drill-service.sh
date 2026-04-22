@@ -233,7 +233,7 @@ jq -n \
       estimated_cost_usd: ($cost | tonumber),
       generated_at: (now | todate)
     }
-  }' | tee "$OUT_JSON" >/dev/null
+  }' > "$OUT_JSON"
 
 echo "Wrote $OUT_JSON  (CE calls: $CALLS, est. cost: \$$COST)" >&2
 

@@ -96,7 +96,7 @@ jq -n \
     generated_at: (now | todate),
     summary: $summary,
     findings: $findings
-  }' | tee "$OUT_JSON" >/dev/null
+  }' > "$OUT_JSON"
 
 echo "Wrote $OUT_JSON" >&2
 

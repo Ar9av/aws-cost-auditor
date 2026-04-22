@@ -167,7 +167,7 @@ jq -n \
     by_region: $by_region,
     recommendations: $recs,
     meta: { ce_api_calls: 1, estimated_cost_usd: 0.01 }
-  }' | tee "$OUT_JSON" >/dev/null
+  }' > "$OUT_JSON"
 
 echo "Wrote $OUT_JSON  (total transfer cost: \$$total)" >&2
 
@@ -197,4 +197,6 @@ if [[ "$HUMAN" == "1" ]]; then
       "  - Potential: \(.estimated_monthly_saving_pct)",
       "  - Why: \(.rationale)")
   ' "$OUT_JSON"
+else
+  cat "$OUT_JSON"
 fi
