@@ -280,15 +280,6 @@ See `CLAUDE.md` for the full project rules.
 
 ---
 
-## Acknowledgements
-
-- [Microck/ordinary-claude-skills](https://github.com/Microck/ordinary-claude-skills/tree/main/skills_all/aws-skills) — starting-point reference for the AWS skill pattern
-- [microsoft/azure-skills](https://github.com/microsoft/azure-skills) — structure and multi-agent portability reference
-- [kosty-cloud/kosty](https://github.com/kosty-cloud/kosty) — reference for thorough AWS audit check coverage
-- The AWS [Cost Optimization Hub](https://docs.aws.amazon.com/cost-management/latest/userguide/cost-optimization-hub.html) and [Compute Optimizer](https://docs.aws.amazon.com/compute-optimizer/) teams for building the APIs this pack leans on
-
----
-
 ## License
 
 MIT. See [`LICENSE`](LICENSE).
