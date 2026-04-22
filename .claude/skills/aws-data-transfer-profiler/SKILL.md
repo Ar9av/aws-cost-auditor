@@ -1,6 +1,10 @@
 ---
 name: aws-data-transfer-profiler
 description: Decompose the notoriously opaque AWS data-transfer bill — NAT Gateway processing bytes, cross-AZ traffic, inter-region transfer, internet egress, and CloudFront. Identifies the specific usage types driving spend and recommends architectural fixes (Gateway VPC Endpoints, traffic locality, PrivateLink). Use this skill when the EC2-Other line item is large, "Data Transfer" appears in the top services, or the user asks "why is my networking bill so high".
+license: MIT
+metadata:
+  author: Ar9av
+  version: "1.1.0"
 ---
 
 # aws-data-transfer-profiler

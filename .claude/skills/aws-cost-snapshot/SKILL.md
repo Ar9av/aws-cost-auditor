@@ -1,6 +1,10 @@
 ---
 name: aws-cost-snapshot
 description: Produce a high-level AWS spend snapshot — current MTD, previous month, top services, MoM trend, 30-day forecast, and linked-account breakdown (if Organizations access is available). Use this skill when the user asks "what's my AWS bill", "how much are we spending", "where's the money going", for a first-look or executive-summary view, or as the opening step of a full audit. Stays cheap: ~5-8 Cost Explorer API calls per run (~$0.05-0.08).
+license: MIT
+metadata:
+  author: Ar9av
+  version: "1.1.0"
 ---
 
 # aws-cost-snapshot

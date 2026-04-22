@@ -1,6 +1,10 @@
 ---
 name: aws-cost-deep-dive
 description: Drill into the spend for one specific AWS service or dimension. Breaks the service's cost down by usage type, region, availability zone, linked account, and (last 14 days only) resource ID. Use this skill when the user has already seen a snapshot and now asks "why is EC2 so expensive", "what's in the EC2-Other line", "where is RDS money going", or wants to target the top 1-3 services from `aws-cost-snapshot`. Costs ~$0.03-0.15 per service depending on depth.
+license: MIT
+metadata:
+  author: Ar9av
+  version: "1.1.0"
 ---
 
 # aws-cost-deep-dive

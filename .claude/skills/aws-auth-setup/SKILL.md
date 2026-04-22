@@ -1,6 +1,10 @@
 ---
 name: aws-auth-setup
 description: Set up and verify read-only AWS credentials for the cost auditor. Use this skill whenever the user is starting a fresh audit, when `aws sts get-caller-identity` fails, when the user wants to switch profiles, or when they need the minimum IAM policy JSON to hand to their admin. Covers static IAM access keys (profile or env vars) and AWS SSO / IAM Identity Center.
+license: MIT
+metadata:
+  author: Ar9av
+  version: "1.1.0"
 ---
 
 # aws-auth-setup

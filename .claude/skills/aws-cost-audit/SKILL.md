@@ -1,6 +1,10 @@
 ---
 name: aws-cost-audit
 description: Top-level orchestrator for a full AWS cost audit. Sequences aws-auth-setup → aws-cost-snapshot → aws-waste-hunter → aws-cost-optimizer → aws-data-transfer-profiler → aws-tagging-audit → aws-cost-anomalies with confirmation gates between each stage. Use this skill when the user asks for "a full audit", "audit my AWS costs", "comprehensive cost review", "FinOps review", or any variant that implies wanting the whole picture rather than one specific question. Produces a consolidated markdown report.
+license: MIT
+metadata:
+  author: Ar9av
+  version: "1.1.0"
 ---
 
 # aws-cost-audit

@@ -1,6 +1,10 @@
 ---
 name: aws-tagging-audit
 description: Measure AWS cost-allocation tag hygiene. Surfaces share of spend that lacks required tags, which cost allocation tags are activated vs inactive, which resource types are worst-tagged, and the biggest untagged cost offenders. Use this skill when the user asks about "tagging", "untagged resources", "cost allocation tags", "chargeback", "showback", or when they need tag-based budget filtering to work.
+license: MIT
+metadata:
+  author: Ar9av
+  version: "1.1.0"
 ---
 
 # aws-tagging-audit

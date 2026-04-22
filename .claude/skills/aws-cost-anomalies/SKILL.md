@@ -1,6 +1,10 @@
 ---
 name: aws-cost-anomalies
 description: Surface AWS Cost Anomaly Detection findings. Lists anomaly monitors, recent anomalies with impact, and root causes identified by AWS's ML model. Use this skill when the user asks "is there a cost spike", "why did the bill jump", "anomaly alerts", "unexpected charges", or when `aws-cost-snapshot` shows an unusual MoM jump. Also surfaces when no monitors are configured (gap signal).
+license: MIT
+metadata:
+  author: Ar9av
+  version: "1.1.0"
 ---
 
 # aws-cost-anomalies

@@ -1,0 +1,6 @@
+{
+  "name": "aws-cost-auditor",
+  "version": "1.1.0",
+  "description": "AWS FinOps skill pack for Gemini CLI",
+  "skills": "./.claude/skills/"
+}

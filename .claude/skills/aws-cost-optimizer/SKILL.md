@@ -1,6 +1,10 @@
 ---
 name: aws-cost-optimizer
 description: Pull cost-saving recommendations from AWS's own optimization services — Cost Optimization Hub (aggregator), Compute Optimizer (EC2/EBS/Lambda/RDS/ECS rightsizing), Trusted Advisor (Business Support+ only), and current Savings Plan / Reserved Instance utilization. Use this skill when the user asks "what should I change", "how do I save money", "rightsize recommendations", "Savings Plans", "reserved instances", "what does AWS recommend". Gracefully degrades when Cost Optimization Hub or Trusted Advisor isn't enrolled / available.
+license: MIT
+metadata:
+  author: Ar9av
+  version: "1.1.0"
 ---
 
 # aws-cost-optimizer

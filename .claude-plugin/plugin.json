@@ -1,0 +1,6 @@
+{
+  "name": "aws-cost-auditor",
+  "description": "AWS FinOps skill pack for Claude Code",
+  "version": "1.1.0",
+  "skills": "../.claude/skills/"
+}

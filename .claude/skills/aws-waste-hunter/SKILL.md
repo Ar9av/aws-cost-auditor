@@ -1,6 +1,10 @@
 ---
 name: aws-waste-hunter
 description: Scan all AWS regions for orphaned, idle, and over-retained resources that silently accrue cost — unattached EBS volumes, unused Elastic IPs, idle NAT Gateways, load balancers with zero targets, old EBS snapshots, CloudWatch log groups with no retention, unused RDS instances, stopped EC2 with attached EBS, and empty ECR repositories. Use this skill whenever the user asks "what's wasted", "what can we delete", "find idle resources", "cleanup opportunities", or after `aws-cost-snapshot` as a quick wins pass. Uses only free Describe/List APIs — no Cost Explorer cost.
+license: MIT
+metadata:
+  author: Ar9av
+  version: "1.1.0"
 ---
 
 # aws-waste-hunter
